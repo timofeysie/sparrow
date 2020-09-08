@@ -1,4 +1,25 @@
+# Passer
+
+*Passer is a genus of sparrows, also known as the true sparrows.*
+
+## Workflow
+
+```bash
+npm start
+npm test
+npm run build
+```
+
+## Original readme
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Commands used to create the project:
+
+```bash
+npx create-react-app passer --typescript --use-npm
+npm i -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser prettier eslint-config-prettier eslint-config-react eslint-plugin-prettier
+```
 
 ## Available Scripts
 
