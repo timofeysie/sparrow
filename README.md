@@ -2,6 +2,50 @@
 
 *Passer is a genus of sparrows, also known as the true sparrows.*
 
+## Current state of the app
+
+Todo:
+
+* fix the development branch issues with useContext
+* isolate the velocity and color range variations into a separate function and unit test
+* add labels for the slider and short description
+
+Initially I created a toy app to experiment with using a slider representing the velocity to change the color or an svg circle representing a star.  This version is the current code in the master branch.
+
+This was fun and teased out some questions I would have for the product owner such as, what is the color of the star with velocity 0?  How does the exponential negative range affect the color?  I used the opacity variable to implement the exponential change on negative velocities, but this would have to be discussed with the product owner as a valid approach.
+
+Architecturally, the first implementation returns the fill value and a set of props spread onto the slider input.  This would have been fine after re-organizing the app and using prop drilling to coordinate the action.
+
+The next task was to organize the app into a more mature set of files that split the different concerns out where they could be tested in isolation.  This starts with a feature directory.
+
+I wanted to get some experience with the ```useContext``` hook which  I haven't really used before much except for learning about it in the docs and various tutorials.  Building my own app that uses this hook was a bit more difficult.
+
+It's straight forward how to use the state and then update it from a template.   It was also easy to create a context provider that let any component in the tree access the values.  But doing so programmatically was a lot more trial and error.   Add to this using TypeScript, and I've given myself a lot more work to do than just the goal of creating the feature.
+
+As of now, I have the useContext work in progress in the ```development``` branch.  I will continue to solve the issues with this branch and given some more time, merge a decent solution when its ready.
+
+ I should be able to do this:
+
+```html
+let { state, dispatch } = React.useContext(StarContext);
+```
+
+And use the star context like this:
+
+```html
+<StarContext.Provider value={value}>{props.children}</StarContext.Provider>
+```
+
+But there is a TypeScript error here:
+
+```txt
+Property 'state' does not exist on type '{ fill: string; velocity: number; }'
+```
+
+So there is a disconnect between the way the context is being created and used.
+
+Next steps are to fix this, and then replace the props used for the initial approach with dispatch actions that are used in the reducer.
+
 ## Workflow
 
 ```bash
