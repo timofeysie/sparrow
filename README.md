@@ -1,6 +1,6 @@
-# Passer
+# Sparrow
 
-*Passer is a genus of sparrows, also known as the true sparrows.*
+*A Passer is a genus of sparrows, also known as the true sparrows.*
 
 ## Workflow
 
